@@ -1,3 +1,9 @@
+$color-light: #F7E987;
+$color-light-hover: #d3c55f;
+$color-medium: #CD6688;
+$color-dark: #7A316F;
+$color-darker: #461959;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -62,15 +68,15 @@
 
 input {
   padding: 10px;
-  border: #CD6688 solid 1px;
+  border: $color-medium solid 1px;
   border-radius: 5px;
 }
 
 .App {
-  background-color: #461959;
+  background-color: $color-darker;
   min-height: 100vh;
   width: 100vw;
-  color: #F7E987;
+  color: $color-light;
 }
 
 .container {
@@ -93,32 +99,33 @@ input {
 }
 
 .toolbar {
-  background-color: #7A316F;
+  background-color: $color-dark;
   display: flex;
   padding: 10px;
   gap: 10px;
-  color: #F7E987;
+  color: $color-light;
 }
 
 .menu-item, button {
   text-decoration: none;
-  color: #461959;
+  color: $color-darker;
   font-weight: bold;
-  background-color: #F7E987;
+  background-color: $color-light;
   padding: 10px 20px;
   border-radius: 5px;
   transition: 0.3s;
   cursor: pointer;
-  border: #F7E987 solid 1px;
+  border: $color-light solid 1px;
   font-size: 1rem;
-}
-.menu-item:hover, button:hover {
-  background-color: #d3c55f;
+
+  &:hover {
+    background-color: $color-light-hover;
+  }
 }
 
 .active {
-  background-color: #d3c55f;
-  border: #d3c55f solid 1px;
+  background-color: $color-light-hover;
+  border: $color-light-hover solid 1px;
 }
 
 .gallery {
@@ -133,7 +140,7 @@ input {
 .selectImage {
   width: 100px;
   height: 100px;
-  background-color: #F7E987;
+  background-color: $color-light;
   border-radius: 5px;
   display: flex;
   align-items: center;
@@ -141,21 +148,22 @@ input {
   padding: 3px;
   cursor: pointer;
   transition: 0.3s;
-}
-.selectImage > img {
-  max-width: 100%;
-  max-height: 100%;
+
+  & > img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 .selected {
-  background-color: #CD6688;
+  background-color: $color-medium;
 }
 
 .taken {
   cursor: unset;
-}
-.taken > img {
-  opacity: 0.5;
+  & > img {
+    opacity: 0.5;
+  }
 }
 
-/*# sourceMappingURL=App.css.map */
+
