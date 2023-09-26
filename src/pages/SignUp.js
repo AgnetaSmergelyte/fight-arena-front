@@ -63,7 +63,7 @@ const SignUp = () => {
             if (data.error) {
                 setErrorMsg(data.message);
             } else {
-                nav("/login");
+                nav("/");
             }
         } catch (err) {
             setErrorMsg('Server Error');

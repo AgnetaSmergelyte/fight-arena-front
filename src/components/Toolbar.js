@@ -1,7 +1,8 @@
 import React from 'react';
 import {NavLink, useNavigate} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
-import {changeId, changeUsername} from "../features/user";
+import {changeId, changeMoney, changeUsername, setInventory} from "../features/user";
+import {socket} from "../App";
 
 const Toolbar = () => {
 
@@ -15,7 +16,10 @@ const Toolbar = () => {
         sessionStorage.removeItem("token");
         dispatch(changeId(''));
         dispatch(changeUsername(''));
-        nav("/login");
+        dispatch(changeMoney(0));
+        dispatch(setInventory([]));
+        socket.emit("logout");
+        nav("/");
     }
 
     return (
@@ -28,7 +32,7 @@ const Toolbar = () => {
                 </div> :
                 <div className="toolbar a-center g10">
                     <NavLink className="menu-item" to="/register">Sign Up</NavLink>
-                    <NavLink className="menu-item" to="/login">Log In</NavLink>
+                    <NavLink className="menu-item" to="/">Log In</NavLink>
                 </div>
             }
         </div>

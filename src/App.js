@@ -5,8 +5,13 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {changeUsername, changeId} from "./features/user";
+import {changeUsername, changeId, changeMoney, setInventory, setImage} from "./features/user";
 import Lobby from "./pages/Lobby";
+import {io} from 'socket.io-client';
+
+export const socket = io("http://localhost:3001", {
+    autoConnect: true
+});
 
 function App() {
 
@@ -21,7 +26,6 @@ function App() {
                 sessionStorage.setItem("token", autologin);
                 token = autologin;
             } else {
-                nav("/login")
                 return;
             }
         }
@@ -38,19 +42,23 @@ function App() {
                 if (!data.error) {
                     dispatch(changeId(data.data.id));
                     dispatch(changeUsername(data.data.username));
+                    dispatch(changeMoney(data.data.money));
+                    dispatch(setInventory(data.data.inventory));
+                    dispatch(setImage(data.data.image));
+                    socket.emit("logged",{username: data.data.username, image: data.data.image});
+                    nav("/lobby")
                 }
             })
             .catch(error => {})
-
     }, []);
 
     return (
         <div className="App">
             <Toolbar/>
             <Routes>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/" element={<Login/>}/>
                 <Route path="/register" element={<SignUp/>}/>
-                <Route path="/" element={<Lobby/>}/>
+                <Route path="/lobby" element={<Lobby/>}/>
             </Routes>
         </div>
     );
