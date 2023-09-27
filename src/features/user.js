@@ -8,6 +8,10 @@ export const userSlice = createSlice({
         image: '',
         money: 0,
         inventory: [],
+        selectedItems: [null, null, null],
+        room: null,
+        player1: null,
+        player2: null,
     },
     reducers: {
         changeUsername: (state, action) => {
@@ -16,8 +20,11 @@ export const userSlice = createSlice({
         changeId: (state, action) => {
             state.id = action.payload
         },
-        changeMoney: (state, action) => {
+        setMoney: (state, action) => {
             state.money = action.payload
+        },
+        changeMoney: (state, action) => {
+            state.money += action.payload
         },
         setInventory: (state, action) => {
             state.inventory = action.payload
@@ -28,9 +35,32 @@ export const userSlice = createSlice({
         addItemToInventory: (state, action) => {
             state.inventory = [...state.inventory, action.payload]
         },
+        setSelectedItems: (state, action) => {
+            state.selectedItems = action.payload
+        },
+        setRoom: (state, action) => {
+            state.room = action.payload
+        },
+        setPlayer1: (state, action) => {
+            state.player1 = action.payload
+        },
+        setPlayer2: (state, action) => {
+            state.player2 = action.payload
+        },
     }
 })
 
-export const {changeUsername, changeId, changeMoney, setInventory, setImage, addItemToInventory} = userSlice.actions
+export const {
+    changeUsername,
+    changeId,
+    setMoney,
+    changeMoney,
+    setInventory,
+    setImage,
+    addItemToInventory,
+    setSelectedItems,
+    setRoom,
+    setPlayer1,
+    setPlayer2} = userSlice.actions
 
 export default userSlice.reducer;

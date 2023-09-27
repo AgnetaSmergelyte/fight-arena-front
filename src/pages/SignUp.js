@@ -49,7 +49,6 @@ const SignUp = () => {
             password: password1,
             image: images[selectedImage].image
         }
-        console.log(userData)
         const options = {
             method: "POST",
             headers: {

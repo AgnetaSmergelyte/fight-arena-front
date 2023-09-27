@@ -2,22 +2,24 @@ import React, {useEffect, useState} from 'react';
 import InventoryItem from "./InventoryItem";
 import {useDispatch, useSelector} from "react-redux";
 import {socket} from "../App";
-import {changeMoney} from "../features/user";
+import {setInventory, setMoney, setSelectedItems} from "../features/user";
 
 const Inventory = () => {
 
     const dispatch = useDispatch();
     const inventory = useSelector(state => state.inventory);
     const money = useSelector(state => state.money);
+    const selectedItems = useSelector(state => state.selectedItems);
     const [newItems, setNewItems] = useState([]);
-    const [selectedItems, setSelectedItems] = useState([null, null, null]);
     const [generateError, setGenerateError] = useState('');
-    const [selectError, setSelectError] = useState('');
 
     useEffect(() => {
         socket.on('items', val => {
-            setNewItems(val);
-            dispatch(changeMoney(money - 100));
+            setNewItems(val.items);
+            dispatch(setMoney(val.money));
+        });
+        socket.on('inventory', val => {
+            dispatch(setInventory(val));
         });
     }, [])
 
@@ -30,7 +32,7 @@ const Inventory = () => {
     }
 
     return (
-        <div className="d-flex f-col g10">
+        <div className="d-flex f-col g10 flex-1">
             <div className="section p10 d-flex f-col a-center">
                 <div className="inventory d-flex space-even p10 g10">
                     {newItems.map((x, i) =>
@@ -51,12 +53,11 @@ const Inventory = () => {
                         <InventoryItem key={i}
                                        item={x}
                                        take={false}
-                                       selectedItems={selectedItems}
-                                       setSelectedItems={setSelectedItems}/>)}
+                        />)}
                 </div>
-                <b className="text-red mb-10">{selectError}</b>
                 <div className="d-flex p10 g10 selected-items j-center">
-                    {selectedItems.map((x, i) => <div key={i}>{x && <InventoryItem item={x} take={false} taken={true} />}</div>)}
+                    {selectedItems.map((x, i) => <div key={i}>{x &&
+                        <InventoryItem item={x} take={false} taken={true}/>}</div>)}
                 </div>
             </div>
         </div>

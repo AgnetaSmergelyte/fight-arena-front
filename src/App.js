@@ -5,9 +5,10 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import {useDispatch} from "react-redux";
 import {useEffect} from "react";
-import {changeUsername, changeId, changeMoney, setInventory, setImage} from "./features/user";
+import {changeUsername, changeId, changeMoney, setInventory, setImage, setMoney} from "./features/user";
 import Lobby from "./pages/Lobby";
 import {io} from 'socket.io-client';
+import Arena from "./pages/Arena";
 
 export const socket = io("http://localhost:3001", {
     autoConnect: true
@@ -42,11 +43,11 @@ function App() {
                 if (!data.error) {
                     dispatch(changeId(data.data.id));
                     dispatch(changeUsername(data.data.username));
-                    dispatch(changeMoney(data.data.money));
+                    dispatch(setMoney(data.data.money));
                     dispatch(setInventory(data.data.inventory));
                     dispatch(setImage(data.data.image));
                     socket.emit("logged",{username: data.data.username, image: data.data.image});
-                    nav("/lobby")
+                    // nav("/lobby")
                 }
             })
             .catch(error => {})
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/" element={<Login/>}/>
                 <Route path="/register" element={<SignUp/>}/>
                 <Route path="/lobby" element={<Lobby/>}/>
+                <Route path="/arena" element={<Arena/>}/>
             </Routes>
         </div>
     );

@@ -1,7 +1,7 @@
 import React, {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {changeUsername, changeId, changeMoney, setInventory, setImage} from "../features/user";
+import {changeUsername, changeId, changeMoney, setInventory, setImage, setMoney} from "../features/user";
 import {socket} from "../App";
 
 const Login = () => {
@@ -35,7 +35,7 @@ const Login = () => {
             } else {
                 dispatch(changeId(data.data.user.id));
                 dispatch(changeUsername(data.data.user.username));
-                dispatch(changeMoney(data.data.user.money));
+                dispatch(setMoney(data.data.user.money));
                 dispatch(setInventory(data.data.user.inventory));
                 dispatch(setImage(data.data.user.image));
                 if (autologin) localStorage.setItem("autologin", data.data.token);
