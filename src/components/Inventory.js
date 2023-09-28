@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import InventoryItem from "./InventoryItem";
 import {useDispatch, useSelector} from "react-redux";
 import {socket} from "../App";
-import {setInventory, setMoney, setSelectedItems} from "../features/user";
+import {setInventory, setMoney} from "../features/user";
 
 const Inventory = () => {
 
@@ -44,7 +44,7 @@ const Inventory = () => {
                         />)}
                 </div>
                 <b className="text-red mb-10">{generateError}</b>
-                <button className="btn-dark" onClick={generateNewItems}>Generate 100$</button>
+                <button className="btn-dark" onClick={generateNewItems}>Generate Items (100$)</button>
 
             </div>
             <div className="section">

@@ -26,7 +26,7 @@ const Toolbar = () => {
         <div>
             {username ?
                 <div className="toolbar space-btw a-center">
-                    <b>Logged in as: <em>{username}</em></b>
+                    <em>Logged in as: <b>{username}</b></em>
                     <b>Money: {money}$</b>
                     <button onClick={logout}>Log Out</button>
                 </div> :

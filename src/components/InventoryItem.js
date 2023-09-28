@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {socket} from "../App";
 import {useDispatch, useSelector} from "react-redux";
-import {addItemToInventory, setSelectedItems} from "../features/user";
+import {setSelectedItems} from "../features/user";
 
 const InventoryItem = ({item, take, newItems, setNewItems, taken}) => {
 

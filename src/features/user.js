@@ -12,6 +12,8 @@ export const userSlice = createSlice({
         room: null,
         player1: null,
         player2: null,
+        turn: '',
+        timer: 20
     },
     reducers: {
         changeUsername: (state, action) => {
@@ -47,6 +49,15 @@ export const userSlice = createSlice({
         setPlayer2: (state, action) => {
             state.player2 = action.payload
         },
+        setTurn: (state, action) => {
+            state.turn = action.payload
+        },
+        countDown: (state, action) => {
+            state.timer--
+        },
+        setTimer: (state, action) => {
+            state.timer = action.payload
+        },
     }
 })
 
@@ -57,10 +68,13 @@ export const {
     changeMoney,
     setInventory,
     setImage,
-    addItemToInventory,
     setSelectedItems,
     setRoom,
     setPlayer1,
-    setPlayer2} = userSlice.actions
+    setPlayer2,
+    setTurn,
+    countDown,
+    setTimer
+} = userSlice.actions
 
 export default userSlice.reducer;

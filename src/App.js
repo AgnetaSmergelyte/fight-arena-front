@@ -47,7 +47,7 @@ function App() {
                     dispatch(setInventory(data.data.inventory));
                     dispatch(setImage(data.data.image));
                     socket.emit("logged",{username: data.data.username, image: data.data.image});
-                    // nav("/lobby")
+                    nav("/lobby")
                 }
             })
             .catch(error => {})

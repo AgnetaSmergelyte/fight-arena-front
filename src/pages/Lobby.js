@@ -6,7 +6,7 @@ import {socket} from "../App";
 import {useNavigate} from "react-router-dom";
 import RequestModal from "../components/RequestModal";
 import AlertBox from "../components/AlertBox";
-import {setPlayer1, setPlayer2, setRoom} from "../features/user";
+import {setPlayer1, setPlayer2, setRoom, setTurn} from "../features/user";
 
 const Lobby = () => {
 
@@ -18,7 +18,10 @@ const Lobby = () => {
     const [alert, setAlert] = useState(null);
 
     useEffect(() => {
-        if (!sessionStorage.getItem("token")) nav("/");
+        if (!sessionStorage.getItem("token")) {
+            nav("/");
+            return;
+        }
         socket.on('userList', val => {
             setUsers(val);
         });
@@ -36,7 +39,8 @@ const Lobby = () => {
             dispatch(setRoom(val.roomName));
             dispatch(setPlayer1(val.player1));
             dispatch(setPlayer2(val.player2));
-            socket.emit('join', val);
+            dispatch(setTurn(val.turn));
+            socket.emit('join', val.roomName);
             nav('/arena');
         })
     }, [])
