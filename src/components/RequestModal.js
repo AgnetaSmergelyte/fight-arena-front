@@ -1,11 +1,8 @@
 import React from 'react';
 import {socket} from "../App";
-import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 const RequestModal = ({request, setRequest, setAlert}) => {
-
-    const nav = useNavigate();
     const selectedItems = useSelector(state => state.selectedItems);
     function cancelRequest() {
         socket.emit("cancelRequest", request.socketId);

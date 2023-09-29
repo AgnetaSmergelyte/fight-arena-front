@@ -5,12 +5,10 @@ import {changeId, changeMoney, changeUsername, setInventory} from "../features/u
 import {socket} from "../App";
 
 const Toolbar = () => {
-
     const nav = useNavigate();
     const dispatch = useDispatch();
     const username = useSelector(state => state.username);
     const money = useSelector(state => state.money);
-
     function logout() {
         localStorage.removeItem("autologin");
         sessionStorage.removeItem("token");

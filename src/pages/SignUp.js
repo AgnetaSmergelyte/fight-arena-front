@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 import FighterSelectBox from "../components/FighterSelectBox";
 
 const SignUp = () => {
-
     const nav = useNavigate();
     const usernameRef = useRef();
     const password1Ref = useRef();

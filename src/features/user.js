@@ -1,5 +1,4 @@
 import {createSlice} from "@reduxjs/toolkit";
-
 export const userSlice = createSlice({
     name: "user",
     initialState: {
@@ -8,6 +7,7 @@ export const userSlice = createSlice({
         image: '',
         money: 0,
         inventory: [],
+        newItems: [],
         selectedItems: [null, null, null],
         room: null,
         player1: null,
@@ -30,6 +30,9 @@ export const userSlice = createSlice({
         },
         setInventory: (state, action) => {
             state.inventory = action.payload
+        },
+        setNewItems: (state, action) => {
+            state.newItems = action.payload
         },
         setImage: (state, action) => {
             state.image = action.payload
@@ -67,6 +70,7 @@ export const {
     setMoney,
     changeMoney,
     setInventory,
+    setNewItems,
     setImage,
     setSelectedItems,
     setRoom,

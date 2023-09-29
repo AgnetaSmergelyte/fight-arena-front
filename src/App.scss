@@ -162,10 +162,12 @@ input {
 
 .btn-large {
   width: 50%;
-  font-size: 1.5rem;
   background-color: $color-medium;
   border: none;
   color: $color-light;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover {
     background-color: #d34372;
@@ -229,6 +231,10 @@ input {
   cursor: pointer;
   display: flex;
   flex-direction: column;
+
+  & img {
+    width: 70px;
+  }
 }
 
 .item-properties {
@@ -296,7 +302,6 @@ input {
   height: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
   align-items: center;

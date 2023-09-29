@@ -1,18 +1,18 @@
 import React, {useState} from 'react';
 import {socket} from "../App";
 import {useDispatch, useSelector} from "react-redux";
-import {setSelectedItems} from "../features/user";
+import {setNewItems, setSelectedItems} from "../features/user";
 
-const InventoryItem = ({item, take, newItems, setNewItems, taken}) => {
-
+const InventoryItem = ({item, take, taken}) => {
     const dispatch = useDispatch();
+    const newItems = useSelector(state => state.newItems);
     const selectedItems = useSelector(state => state.selectedItems);
     const [showProperties, setShowProperties] = useState(false);
 
     function takeItem(){
         socket.emit("takeItem", item);
         const filteredItems = newItems.filter(x => x !== item);
-        setNewItems(filteredItems);
+        dispatch(setNewItems(filteredItems));
     }
 
     function removeFromInventory() {

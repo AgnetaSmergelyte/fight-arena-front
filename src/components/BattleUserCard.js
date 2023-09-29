@@ -3,7 +3,6 @@ import {useSelector} from "react-redux";
 import {socket} from "../App";
 
 const BattleUserCard = ({player}) => {
-
     const username = useSelector(state => state.username);
     const room = useSelector(state => state.room);
     function drinkPotion() {

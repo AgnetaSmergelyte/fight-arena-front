@@ -1,11 +1,10 @@
 import React, {useRef, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {changeUsername, changeId, changeMoney, setInventory, setImage, setMoney} from "../features/user";
+import {changeUsername, changeId, setInventory, setImage, setMoney} from "../features/user";
 import {socket} from "../App";
 
 const Login = () => {
-
     const nav = useNavigate();
     const dispatch = useDispatch();
     const usernameRef = useRef();

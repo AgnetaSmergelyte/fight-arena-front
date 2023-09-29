@@ -3,9 +3,7 @@ import {socket} from "../App";
 import {useSelector} from "react-redux";
 
 const SingleUserCard = ({user, setAlert}) => {
-
     const selectedItems = useSelector(state => state.selectedItems);
-
     function sendRequest() {
         if (selectedItems[0] === null) {
             setAlert('Select your weapon first')
