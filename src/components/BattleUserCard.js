@@ -1,12 +1,18 @@
 import React from 'react';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {socket} from "../App";
+import {setSelectedItems} from "../features/user";
 
 const BattleUserCard = ({player}) => {
+    const dispatch = useDispatch();
     const username = useSelector(state => state.username);
     const room = useSelector(state => state.room);
+    const selectedItems = useSelector(state => state.selectedItems);
     function drinkPotion() {
         socket.emit("potion", room);
+        const newArr = [...selectedItems];
+        newArr[2] = null;
+        dispatch(setSelectedItems(newArr));
     }
 
     return (
