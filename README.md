@@ -8,19 +8,21 @@ Seamless navigation and dynamic page rendering made using React-Router.
 
 Efficient data flow across components and consistent state management implemented by Redux.
 
-Responsive Mobile First Web Design enhanced with SCSS.
+Web Design enhanced with SCSS.
 
 ## Back-End:
 
-Database: Data storage and management is handled using MongoDB, a NoSQL database known for its flexibility and scalability.
+Server has been powered by Node.js, a runtime environment known for its non-blocking, event-driven architecture, making it ideal for scalable applications.
 
-Password Security: User passwords are securely hashed using bcrypt, ensuring data protection and security.
+Express.js, a minimal and flexible Node.js web application framework, was used to build the server's API endpoints and handle middleware.
 
-Authorization: Implemented JWT (JSON Web Tokens) for secure and efficient user authorization, allowing for protected routes and actions based on user roles or permissions.
+Data storage and management is handled using MongoDB, a NoSQL database known for its flexibility and scalability.
 
-Real-time Communication: The platform supports real-time interactions using Socket.io for instant messaging and live post updates.
+User passwords are securely hashed using bcrypt, ensuring data protection and security.
 
-User Management: ViewExpress is employed for tasks like user registration, login functionalities, managing posts, and overseeing message exchanges.
+Implemented JWT (JSON Web Tokens) for secure and efficient user authorization, allowing for protected routes and actions based on user roles or permissions.
+
+The platform supports real-time interactions using Socket.io for live game experience.
 
 # Take a look
 
