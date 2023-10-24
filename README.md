@@ -20,7 +20,7 @@ Data storage and management is handled using MongoDB, a NoSQL database known for
 
 User passwords are securely hashed using bcrypt, ensuring data protection and security.
 
-Implemented JWT (JSON Web Tokens) for secure and efficient user authorization, allowing for protected routes and actions based on user roles or permissions.
+Implemented JWT (JSON Web Tokens) for secure and efficient user authorization, allowing for protected routes and actions.
 
 The platform supports real-time interactions using Socket.io for live game experience.
 
